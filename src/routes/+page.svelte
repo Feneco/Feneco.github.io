@@ -1,5 +1,6 @@
 <script>
     import Button from "$lib/components/Button.svelte";
+    import processInput from "$lib/calculator";
 </script>
 
 <svelte:head>
@@ -9,34 +10,34 @@
 
 <section>
     <div class="innerButtons">
-        <Button text={"DUP"} />
-        <Button text={"ROT"} />
-        <Button text={"SWAP"} />
-        <Button text={"DROP"} />
-        <Button text={"RCL"} />
+        <Button text={"DUP"}  on:click={processInput} />
+        <Button text={"ROT"}  on:click={processInput} />
+        <Button text={"SWAP"} on:click={processInput} />
+        <Button text={"DROP"} on:click={processInput} />
+        <Button text={"RCL"}  on:click={processInput} />
 
-        <Button text={"/"} on:click={(e) => console.log(e.target?.innerText)}/>
-        <Button text={"7"} on:click={(e) => console.log(e.target?.innerText)}/>
-        <Button text={"8"} />
-        <Button text={"9"} />
-        <Button text={"SUM"} />
+        <Button text={"/"}   on:click={processInput} />
+        <Button text={"7"}   on:click={processInput} />
+        <Button text={"8"}   on:click={processInput} />
+        <Button text={"9"}   on:click={processInput} />
+        <Button text={"SUM"} on:click={processInput} />
 
-        <Button text={"X"} />
-        <Button text={"4"} />
-        <Button text={"5"} />
-        <Button text={"6"} />
-        <Button text={"+/-"} />
+        <Button text={"X"}   on:click={processInput} />
+        <Button text={"4"}   on:click={processInput} />
+        <Button text={"5"}   on:click={processInput} />
+        <Button text={"6"}   on:click={processInput} />
+        <Button text={"+/-"} on:click={processInput} />
         
-        <Button text={"-"} />
-        <Button text={"1"} />
-        <Button text={"2"} />
-        <Button text={"3"} />
-        <Button text={"1/x"} />
+        <Button text={"-"}   on:click={processInput} />
+        <Button text={"1"}   on:click={processInput} />
+        <Button text={"2"}   on:click={processInput} />
+        <Button text={"3"}   on:click={processInput} />
+        <Button text={"1/x"} on:click={processInput} />
 
-        <Button text={"+"} />
-        <Button text={"0"} />
-        <Button text={"."} />
-        <Button text={"enter"} style={"grid-column: 4/6;"}/>
+        <Button text={"+"} on:click={processInput} />
+        <Button text={"0"} on:click={processInput} />
+        <Button text={"."} on:click={processInput} />
+        <Button text={"enter"} style={"grid-column: 4/6;"} on:click={processInput} />
     </div>
 </section>
 
