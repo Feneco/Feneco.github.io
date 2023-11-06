@@ -1,10 +1,11 @@
+@use "../lib/globals/colors.scss";
+
 body {
     min-height: 100vh;
     background-attachment: fixed;
-    background-color: var(--color-bg-1);
     background-size: 100vw 100vh;
-    background: linear-gradient(180deg, #FFF 0%, #ADADAD 100%);
-    
+    background: colors.$backgroundColor;
+
     margin: 0;
     display: flex;
     justify-content: center;
