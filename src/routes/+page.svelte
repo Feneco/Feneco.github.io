@@ -10,8 +10,6 @@
         calculator.inputScreen = calculator.inputScreen
         calculator.stack = calculator.stack
     }
-
-
 </script>
 
 <svelte:head>
