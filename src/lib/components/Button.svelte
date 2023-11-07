@@ -13,10 +13,10 @@
 </script>
 
 <div class="wrapper" style={style ?? ''}>
-    <label for={id_idx} class="smallButton up">{funUp ?? 'asfasfas'}</label>
+    <label for={id_idx} class="smallButton up">{funUp ?? ''}</label>
     <button class="internalButton" style={buttonStyle} id={id_idx} on:click>
         <slot />
-        <div class="smallButton down">{funDown ?? 'hfdhf'}</div>
+        <div class="smallButton down">{funDown ?? ''}</div>
     </button>
 </div>
 
