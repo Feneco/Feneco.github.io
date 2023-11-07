@@ -1,28 +1,4 @@
-export interface Command {
-    execute: (calc: RpnCalculator) => void;
-}
-
-
-// TODO: Add undo, history, or other things
-export class RpnCalculator {
-    stack: number[];
-    inputScreen: string;
-
-    constructor() {
-        this.stack = [];
-        this.inputScreen = '';
-    }
-
-    runCommand(command: Command) {
-        let stackBackup = this.stack.slice()
-        try {
-            command.execute(this);
-        } catch (e) {
-            this.stack = stackBackup
-            throw (e)
-        }
-    }
-}
+import type { Command, RpnCalculator } from "./rpnCalculator";
 
 
 function operate(calc: RpnCalculator, f: (a: number, b: number) => number): void {
@@ -202,9 +178,10 @@ export class Drop implements Command {
 }
 
 
-export class Rcl implements Command {
+export class ClearAll implements Command {
     execute(calc: RpnCalculator) {
         calc.stack.length = 0
+        calc.inputScreen = ""
     }
 }
 

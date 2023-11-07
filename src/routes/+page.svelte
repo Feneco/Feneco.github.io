@@ -1,14 +1,16 @@
 <script lang="ts">
+    import './styles.scss';
     import Button from '$lib/components/Button.svelte';
-    import * as Rpn from '$lib/functions/calculator'
+    import * as Rpn from '$lib/functions';
+    import Icon from '@iconify/svelte';
 
-    let calculator = new Rpn.RpnCalculator()
+    let calculator = new Rpn.RpnCalculator();
 
     function callCalculator(cmd: Rpn.Command) {
         // TODO: catch exceptions and display errors from the line below
-        calculator.runCommand(cmd)
-        calculator.inputScreen = calculator.inputScreen
-        calculator.stack = calculator.stack
+        calculator.runCommand(cmd);
+        calculator.inputScreen = calculator.inputScreen;
+        calculator.stack = calculator.stack;
     }
 </script>
 
@@ -38,181 +40,230 @@
 
     <div class="innerButtons">
         <Button
-            text={'DUP'}
             on:click={() => {
-                callCalculator(new Rpn.Duplicate())
+                callCalculator(new Rpn.Duplicate());
             }}
-        />
+        >
+            <div class="buttonText">DUP</div>
+        </Button>
         <Button
-            text={'SWAP'}
             on:click={() => {
-                callCalculator(new Rpn.Swap())
+                callCalculator(new Rpn.Swap());
             }}
-        />
+        >
+            <div class="buttonText">SWAP</div>
+        </Button>
         <Button
-            text={'DROP'}
             on:click={() => {
-                callCalculator(new Rpn.Drop())
+                callCalculator(new Rpn.Drop());
             }}
-        />
+        >
+            <div class="buttonText">DROP</div>
+        </Button>
         <Button
-            text={'OVER'}
             on:click={() => {
-                callCalculator(new Rpn.Over())
+                callCalculator(new Rpn.Over());
             }}
-        />
+        >
+            <div class="buttonText">OVER</div>
+        </Button>
         <Button
-            text={'ROT'}
             on:click={() => {
-                callCalculator(new Rpn.Rot())
+                callCalculator(new Rpn.Rot());
             }}
-        />
+        >
+            <div class="buttonText">ROT</div>
+        </Button>
         <!-- ################################################ -->
         <Button
-            text={'%'}
             on:click={() => {
-                callCalculator(new Rpn.Percent())
+                callCalculator(new Rpn.Percent());
             }}
-        />
+        >
+            <div>
+                <Icon
+                    icon="material-symbols:percent-rounded"
+                    width="25"
+                    height="25"
+                    color="white"
+                />
+            </div>
+        </Button>
         <Button
-            text={'sqrt'}
             on:click={() => {
-                callCalculator(new Rpn.Sqrt())
+                callCalculator(new Rpn.Sqrt());
             }}
-        />
+        >
+            <div>
+                <Icon icon="mdi:square-root" width="30" height="30" color="white" />
+            </div>
+        </Button>
         <Button
-            text={'1/x'}
             on:click={() => {
-                callCalculator(new Rpn.Invert())
+                callCalculator(new Rpn.Invert());
             }}
-        />
+        >
+            <div class="buttonText">1/x</div>
+        </Button>
         <Button
-            text={'+/-'}
             on:click={() => {
-                callCalculator(new Rpn.Negate())
+                callCalculator(new Rpn.Negate());
             }}
-        />
+        >
+            <div>
+                <Icon icon="ic:baseline-plus-minus" width="25" height="25" color="white" />
+            </div>
+        </Button>
         <Button
-            text={'/'}
             on:click={() => {
-                callCalculator(new Rpn.Div())
+                callCalculator(new Rpn.Div());
             }}
-        />
+        >
+            <div>
+                <Icon icon="ic:baseline-divide" width="25" height="25" color="white" />
+            </div>
+        </Button>
         <!-- ################################################ -->
         <Button
-            text={'<X'}
-            buttonStyle={"background-color: #A51253;"}
+            buttonStyle={'background-color: #A51253;'}
             on:click={() => {
-                callCalculator(new Rpn.Erase())
+                callCalculator(new Rpn.Erase());
             }}
-        />
+        >
+            <div>
+                <Icon icon="mdi:erase" width="25" height="25" color="white" />
+            </div>
+        </Button>
         <Button
-            text={'7'}
             on:click={() => {
-                callCalculator(new Rpn.AddToInput("7"))
+                callCalculator(new Rpn.AddToInput('7'));
             }}
-        />
+        >
+            <div class="buttonText">7</div>
+        </Button>
         <Button
-            text={'8'}
             on:click={() => {
-                callCalculator(new Rpn.AddToInput("8"))
+                callCalculator(new Rpn.AddToInput('8'));
             }}
-        />
+        >
+            <div class="buttonText">8</div>
+        </Button>
         <Button
-            text={'9'}
             on:click={() => {
-                callCalculator(new Rpn.AddToInput("9"))
+                callCalculator(new Rpn.AddToInput('9'));
             }}
-        />
+        >
+            <div class="buttonText">9</div>
+        </Button>
         <Button
-            text={'X'}
             on:click={() => {
-                callCalculator(new Rpn.Mul())
+                callCalculator(new Rpn.Mul());
             }}
-        />
+        >
+            <div>
+                <Icon icon="mdi:multiply" width="25" height="25" color="white" />
+            </div>
+        </Button>
+        <!-- ################################################ -->
+        <Button buttonStyle={'background-color: #9F16A1;'} on:click={() => {}}>
+            <div class="buttonText">F</div>
+        </Button>
+        <Button
+            on:click={() => {
+                callCalculator(new Rpn.AddToInput('4'));
+            }}
+        >
+            <div class="buttonText">4</div>
+        </Button>
+        <Button
+            on:click={() => {
+                callCalculator(new Rpn.AddToInput('5'));
+            }}
+        >
+            <div class="buttonText">5</div>
+        </Button>
+        <Button
+            on:click={() => {
+                callCalculator(new Rpn.AddToInput('6'));
+            }}
+        >
+            <div class="buttonText">6</div>
+        </Button>
+        <Button
+            on:click={() => {
+                callCalculator(new Rpn.Sub());
+            }}
+        >
+            <div>
+                <Icon icon="ri:subtract-fill" width="25" height="25" color="white" />
+            </div>
+        </Button>
+        <!-- ################################################ -->
+        <Button buttonStyle={'background-color: #E0B20F;'} on:click={() => {}}>
+            <div class="buttonText">G</div>
+        </Button>
+        <Button
+            on:click={() => {
+                callCalculator(new Rpn.AddToInput('1'));
+            }}
+        >
+            <div class="buttonText">1</div>
+        </Button>
+        <Button
+            on:click={() => {
+                callCalculator(new Rpn.AddToInput('2'));
+            }}
+        >
+            <div class="buttonText">2</div>
+        </Button>
+        <Button
+            on:click={() => {
+                callCalculator(new Rpn.AddToInput('3'));
+            }}
+        >
+            <div class="buttonText">3</div>
+        </Button>
+        <Button
+            on:click={() => {
+                callCalculator(new Rpn.Add());
+            }}
+        >
+            <div>
+                <Icon icon="ic:baseline-add" width="25" height="25" color="white" />
+            </div>
+        </Button>
         <!-- ################################################ -->
         <Button
-            text={'F'}
-            buttonStyle={"background-color: #9F16A1;"}
-            on:click={() => {}}
-        />
-        <Button
-            text={'4'}
             on:click={() => {
-                callCalculator(new Rpn.AddToInput("4"))
+                callCalculator(new Rpn.ClearAll());
             }}
-        />
+        >
+            <div>
+                <Icon icon="material-symbols:delete-sweep" width="25" height="25" color="white" />
+            </div>
+        </Button>
         <Button
-            text={'5'}
             on:click={() => {
-                callCalculator(new Rpn.AddToInput("5"))
+                callCalculator(new Rpn.AddToInput('0'));
             }}
-        />
+        >
+            <div class="buttonText">0</div>
+        </Button>
         <Button
-            text={'6'}
             on:click={() => {
-                callCalculator(new Rpn.AddToInput("6"))
+                callCalculator(new Rpn.AddToInput('.'));
             }}
-        />
+        >
+            <div class="buttonText">.</div>
+        </Button>
         <Button
-            text={'-'}
-            on:click={() => {callCalculator(new Rpn.Sub())}}
-        />
-        <!-- ################################################ -->
-        <Button
-            text={'G'}
-            buttonStyle={"background-color: #E0B20F;"}
-            on:click={() => {}}
-        />
-        <Button
-            text={'1'}
-            on:click={() => {
-                callCalculator(new Rpn.AddToInput("1"))
-            }}
-        />
-        <Button
-            text={'2'}
-            on:click={() => {
-                callCalculator(new Rpn.AddToInput("2"))
-            }}
-        />
-        <Button
-            text={'3'}
-            on:click={() => {
-                callCalculator(new Rpn.AddToInput("3"))
-            }}
-        />
-        <Button
-            text={'+'}
-            on:click={() => {
-                callCalculator(new Rpn.Add())
-            }}
-        />
-        <!-- ################################################ -->
-        <Button
-            text={''}
-            on:click={() => {
-            }}
-        />
-        <Button
-            text={'0'}
-            on:click={() => {
-                callCalculator(new Rpn.AddToInput("0"))
-            }}
-        />
-        <Button
-            text={'.'}
-            on:click={() => {
-                callCalculator(new Rpn.AddToInput("."))
-            }}
-        />
-        <Button
-            text={'enter'}
             style={'grid-column: 4/6;'}
             on:click={() => {
-                callCalculator(new Rpn.Enter())
+                callCalculator(new Rpn.Enter());
             }}
-        />
+        >
+            <div class="buttonText">enter</div>
+        </Button>
     </div>
 </section>
 
@@ -221,6 +272,7 @@
         background-color: white;
         display: flex;
         width: 400px;
+        max-width: 100%;
         padding: 20px;
         flex-direction: column;
         align-items: center;
@@ -232,8 +284,9 @@
     }
 
     .innerButtons {
+        width: 100%;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(auto-fit, 5, 1fr);
         gap: 10px;
         overflow: hidden;
     }
@@ -253,6 +306,13 @@
         display: flex;
         flex-direction: column-reverse;
         overflow: scroll;
+    }
+
+    .buttonText {
+        color: white;
+        font-size: 20px;
+        text-transform: uppercase;
+        margin-top: 6px;
     }
 
     .input {

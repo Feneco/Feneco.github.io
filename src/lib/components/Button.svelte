@@ -3,7 +3,6 @@
 </script>
 
 <script lang="ts">
-    export let text: string;
     export let funUp: string | null = null;
     export let funDown: string | null = null;
     export let style: string | null = null;
@@ -14,10 +13,10 @@
 </script>
 
 <div class="wrapper" style={style ?? ''}>
-    <label for={id_idx} class="smallButton up">{funUp ?? ''}</label>
+    <label for={id_idx} class="smallButton up">{funUp ?? 'asfasfas'}</label>
     <button class="internalButton" style={buttonStyle} id={id_idx} on:click>
-        <div class="buttonText">{text}</div>
-        <div class="smallButton down">{funDown ?? ''}</div>
+        <slot />
+        <div class="smallButton down">{funDown ?? 'hfdhf'}</div>
     </button>
 </div>
 
@@ -29,11 +28,11 @@
     $buttonShadow: rgba(65, 65, 65, 0.37);
     $buttonColor: rgb(87, 87, 87);
     $buttonHover: rgb(128, 128, 128);
-    
+
     .wrapper {
         display: flex;
         height: 70px;
-        min-width: 67px;
+        min-width: 50px;
         flex-direction: column;
         align-items: center;
         font-family: 'Inter Variable';
@@ -54,6 +53,7 @@
         display: flex;
         height: 50px;
         max-height: 50px;
+        width: 100;
         flex-direction: column;
         align-self: stretch;
         gap: 5px;
@@ -69,18 +69,14 @@
         }
 
         &:active {
+            // TODO: The translate below moves the button out of the 
+            // mouseup event in the top area of the button causing the button to appear
+            // to have been misclicked. Find a way to solve this problem.
             transform: translate(0px, 10px);
             height: 40px;
             background: #8b8b8b;
             box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25), inset 0px -8px $buttonBorder;
         }
-    }
-
-    .buttonText {
-        color: white;
-        font-size: 20px;
-        text-transform: uppercase;
-        margin-top: 6px;
     }
 
     .smallButton {
