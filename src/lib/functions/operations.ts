@@ -173,7 +173,10 @@ export class Drop implements Command {
         if (calc.inputScreen !== "") {
             calc.runCommand(new Enter())
         }
-        calc.stack.shift();
+        let x = calc.stack.shift();
+        if (x == null) {
+            throw new Error("Too few arguments")
+        }
     }
 }
 

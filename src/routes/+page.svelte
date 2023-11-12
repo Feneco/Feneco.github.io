@@ -1,16 +1,36 @@
 <script lang="ts">
-    import './styles.scss';
     import Button from '$lib/components/Button.svelte';
     import * as Rpn from '$lib/functions';
     import Icon from '@iconify/svelte';
+    import { snackbarMessage } from './snackbarMessage';
 
     let calculator = new Rpn.RpnCalculator();
 
-    function callCalculator(cmd: Rpn.Command) {
-        // TODO: catch exceptions and display errors from the line below
-        calculator.runCommand(cmd);
+    function updateDisplay() {
         calculator.inputScreen = calculator.inputScreen;
         calculator.stack = calculator.stack;
+    }
+
+    function callCalculator(cmd: Rpn.Command) {
+        try {
+            calculator.runCommand(cmd);
+            snackbarMessage.set("")
+        } catch (e:any) {
+            console.log({s: e})
+            snackbarMessage.set(e.message)
+        }
+        updateDisplay();
+    }
+
+    function undoCalculator() {
+        try {
+            calculator.undo();
+            snackbarMessage.set("")
+        } catch (e:any) {
+            console.log({s: e})
+            snackbarMessage.set(e.message)
+        }
+        updateDisplay();
     }
 </script>
 
@@ -165,7 +185,7 @@
             </div>
         </Button>
         <!-- ################################################ -->
-        <Button buttonStyle={'background-color: #9F16A1;'} on:click={() => {}}>
+        <Button buttonStyle={'background-color: #167aa1;'} on:click={() => {}}>
             <div class="buttonText">F</div>
         </Button>
         <Button
@@ -199,7 +219,7 @@
             </div>
         </Button>
         <!-- ################################################ -->
-        <Button buttonStyle={'background-color: #E0B20F;'} on:click={() => {}}>
+        <Button buttonStyle={'background-color: #e0510f;'} on:click={() => {}}>
             <div class="buttonText">G</div>
         </Button>
         <Button
@@ -264,12 +284,21 @@
         >
             <div class="buttonText">enter</div>
         </Button>
+        <!-- ################################################ -->
+        <Button
+            on:click={() => {
+                undoCalculator();
+            }}
+        >
+            <div class="buttonText">Undo</div>
+        </Button>
     </div>
 </section>
 
 <style lang="scss">
+    @use '../lib/globals/colors.scss';
+
     section {
-        background-color: white;
         display: flex;
         width: 400px;
         max-width: 100%;
@@ -279,8 +308,7 @@
         gap: 10px;
         flex-shrink: 0;
 
-        background: #e9e9e9;
-        box-shadow: 0px 25px 12px -12px rgba(0, 0, 0, 0.25);
+        @extend %paper
     }
 
     .innerButtons {
