@@ -4,6 +4,7 @@
     import Icon from '@iconify/svelte';
     import { snackbarMessage } from './snackbarMessage';
 
+    // Todo: Add a way to create a program
     let calculator = new Rpn.RpnCalculator();
 
     function updateDisplay() {
