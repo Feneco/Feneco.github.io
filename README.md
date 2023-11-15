@@ -1,6 +1,6 @@
 # RPN Calculator
 
-[You can use it here] (https://feneco.github.io/)
+[You can use it here](https://feneco.github.io/)
 
 My implementation of a rpn calculator using svelte.
 
@@ -17,7 +17,7 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of your app:
+To build locally:
 
 ```bash
 npm run build
