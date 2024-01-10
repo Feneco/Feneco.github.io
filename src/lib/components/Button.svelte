@@ -20,6 +20,10 @@
     </button>
 </div>
 
+<!-- Todo: 
+     Fix bug where when you click any button, its shrinking in size causes the click event
+     to not complete.
+-->
 <style lang="scss">
     @use '../globals/colors.scss';
     @import '@fontsource-variable/inter';
